@@ -39,7 +39,6 @@ a {
   color: white;
   font-size: 1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  background-color: #b50010;
   padding: 0.3rem 0.5rem 0.2rem;
   font-weight: bold;
 }
@@ -52,6 +51,15 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.red {
+  background: red;
+}
+.green {
+  background: green;
+}
+.yellow {
+  background: orange;
 }
 @media screen and (max-width: 800px) {
   .movie-poster img,
@@ -106,7 +114,7 @@ a {
                     <h1>{{item.title}}
                     </h1>
                   </router-link>
-                    <p class='movie-rating'>Votes: {{item.vote_average}}</p>
+                    <p class='movie-rating' v-bind:class='getClassRating(item.vote_average)'>Votes: {{item.vote_average}}</p>
                     <p class='movie-data'>Release: {{item.release_date}}</p>
                    </div>
                 </div> 
@@ -121,14 +129,17 @@ a {
 <script>
 import bPagination from "bootstrap-vue/es/components/pagination/pagination";
 export default {
+  // finding films query string
   props: {
     findFilms: {
       type: String
     },
+    // collection of films from the server
     listData: {
       type: Array,
       required: true
     },
+    // size of the page with films
     size: {
       type: Number,
       required: false,
@@ -140,12 +151,14 @@ export default {
       pageNumber: 0
     };
   },
+  // computed prop for changing size and collection of films
   computed: {
     paginatedData() {
       const start = this.pageNumber * this.size,
         end = start + this.size;
       return this.listData.slice(start, end);
     },
+    // using filter
     showMovies() {
       return this.paginatedData.filter(
         film =>
@@ -153,6 +166,15 @@ export default {
       );
     }
   },
+  methods: {
+    // method for background of rating
+    getClassRating(rating) {
+      if (rating < 3) return 'red';
+      else if (rating >3 && rating <6) return 'orange';
+      else return 'green'
+    }
+  },
+  // registering bootstrap component
   components: {
     "b-pagination": bPagination
   }

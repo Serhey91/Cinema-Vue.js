@@ -48,7 +48,7 @@
 <template>
   <div id="app">
     <div class="header">
-    <img class='header_img' src="./assets/logo.png">  
+    <img class='header_img' src="logo.png">  
     <p class='header_title'>Cinema Vue.js app</p>
     </div>
     <div class='container'>
@@ -67,6 +67,7 @@ export default {
         "https://api.themoviedb.org/3/movie/now_playing?api_key=e530dbf87d3f35fe1c14ace5c962084a&page="
     }
   },
+  // In creating hook -finding all films in collection of DB. No more than 40 requests per minute
   created() {
     for (let x = 1; x <= 40; x++) {
       this.$http
@@ -74,8 +75,6 @@ export default {
         .then(response => response.json())
         .then(data => 
           data.results.forEach(movieObj => this.movies.push(movieObj)))
-    }}}
- 
-  
+    }}} 
 
 </script>

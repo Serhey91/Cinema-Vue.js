@@ -64,6 +64,7 @@ export default {
       filterText: ""
     };
   },
+  // Emitting value for parent component
   methods: {
     emitFilter() {
       this.$emit("emitFilter", this.filterText);

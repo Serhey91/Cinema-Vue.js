@@ -31,6 +31,7 @@ movie-filter {
 </template>
 
 <script>
+//home page contains 2 block - movies and filter
 import MovieList from "./MovieList.vue";
 import MovieFilter from "./MovieFilter.vue";
 export default {
@@ -41,6 +42,7 @@ export default {
      
     }
   },
+  // registering components
   components: {
     "movie-list": MovieList,
     "movie-filter": MovieFilter

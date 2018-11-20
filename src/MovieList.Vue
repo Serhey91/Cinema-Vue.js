@@ -35,6 +35,7 @@ export default {
       
     }
   },
+  // registering pagination component
   components: {
     "movie-pagination": Pagination
   }

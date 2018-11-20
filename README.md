@@ -1,6 +1,7 @@
 # cinema-vue
 
-> A Vue.js project
+> A Vue.js project where you can watch movies collection. Movies can be filtered by name in input field. Also - pushing on poster or
+> title you can see current films - details and go back for list. 
 
 ## Build Setup
 
@@ -15,4 +16,10 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# build for production with minification
+npm run build
+```
+
+# Hosting app
+http://movies-vuejs-spa.surge.sh
+```
